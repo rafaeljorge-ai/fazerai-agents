@@ -12,7 +12,7 @@ import {
   generateApiKey,
   hasApiKeyPrefix,
   hashApiKey,
-  LEGACY_API_KEY_PREFIX,
+  LEGACY_API_KEY_PREFIXES,
   verifyApiKey,
 } from "@/modules/api-keys/verify";
 
@@ -30,16 +30,17 @@ describe("api key token generation", () => {
     expect(generateApiKey().token).not.toBe(generateApiKey().token);
   });
 
-  // Brand rename compatibility window: new keys are minted `fazerai_`, keys minted before it carry
-  // `secv4_`. The prefix guard has to admit both; the DB lookup then decides. Dropped at 2.0.
+  // Brand rename compatibility window: new keys are minted `mavikos_`, keys minted before carry  // `fazerai_` or `secv4_`. The prefix guard has to admit all of them; the DB lookup then decides. Dropped at 2.0.
   test("the mint prefix is the current brand marker", () => {
-    expect(API_KEY_PREFIX).toBe("fazerai_");
-    expect(generateApiKey().token.startsWith("fazerai_")).toBe(true);
+    expect(API_KEY_PREFIX).toBe("mavikos_");
+    expect(generateApiKey().token.startsWith("mavikos_")).toBe(true);
   });
 
-  test("the prefix guard admits both markers and nothing else", () => {
+  test("the prefix guard admits every marker and nothing else", () => {
     expect(hasApiKeyPrefix(`${API_KEY_PREFIX}abc`)).toBe(true);
-    expect(hasApiKeyPrefix(`${LEGACY_API_KEY_PREFIX}abc`)).toBe(true);
+    for (const prefix of LEGACY_API_KEY_PREFIXES) {
+      expect(hasApiKeyPrefix(`${prefix}abc`)).toBe(true);
+    }
     expect(hasApiKeyPrefix("sk_live_abc")).toBe(false);
     expect(hasApiKeyPrefix("")).toBe(false);
   });
@@ -150,7 +151,7 @@ describe.skipIf(!dbUp)("api key service + verify (RLS)", () => {
   // minted under the old marker and lives in their DB. It has to keep authenticating unchanged —
   // we cannot reach a self-hosted instance to rewrite it.
   test("verify still resolves a key minted under the pre-rename prefix", async () => {
-    const legacyToken = `${LEGACY_API_KEY_PREFIX}${"l".repeat(32)}`;
+    const legacyToken = `${"l".repeat(32)}`;
     await su?.apiKey.create({
       data: {
         tenantId: tenantA,
@@ -158,7 +159,7 @@ describe.skipIf(!dbUp)("api key service + verify (RLS)", () => {
         // The stored hash covers the WHOLE token, prefix included — this is why no data migration
         // is needed for the rename.
         keyHash: hashApiKey(legacyToken),
-        keyPrefix: legacyToken.slice(0, LEGACY_API_KEY_PREFIX.length + 6),
+        keyPrefix: legacyToken.slice(0, LEGACY_API_KEY_PREFIXES[0].length + 6),
         role: "TENANT_ADMIN",
         createdByUserId: USER_A,
       },
@@ -174,7 +175,7 @@ describe.skipIf(!dbUp)("api key service + verify (RLS)", () => {
     expect(await verifyApiKey("not-a-key", appDb)).toBeNull();
     expect(await verifyApiKey(`${API_KEY_PREFIX}deadbeef`, appDb)).toBeNull();
     expect(
-      await verifyApiKey(`${LEGACY_API_KEY_PREFIX}deadbeef`, appDb),
+      await verifyApiKey(`deadbeef`, appDb),
     ).toBeNull();
   });
 
