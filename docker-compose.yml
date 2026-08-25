@@ -10,11 +10,11 @@ services:
     environment:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: fazerai_agents_db
+      POSTGRES_DB: mavikos_agentic_db
     volumes:
       - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: ['CMD-SHELL', 'pg_isready -U postgres -d fazerai_agents_db']
+      test: ['CMD-SHELL', 'pg_isready -U postgres -d mavikos_agentic_db']
       interval: 10s
       timeout: 5s
       retries: 5

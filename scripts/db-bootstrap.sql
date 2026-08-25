@@ -16,7 +16,7 @@
 --
 -- Usage:
 --   psql "$MIGRATION_DATABASE_URL" \
---     -v app_role=fazerai_app -v app_password='...' -f scripts/db-bootstrap.sql
+--     -v app_role=mavikos_app -v app_password='...' -f scripts/db-bootstrap.sql
 
 \set ON_ERROR_STOP on
 
@@ -24,8 +24,8 @@ CREATE EXTENSION IF NOT EXISTS vector;
 
 -- psql variable substitution does not reach inside dollar-quoted DO blocks, so the
 -- role name and password are handed to the block via session GUCs set out here.
-SELECT set_config('fazerai.app_role', :'app_role', false);
-SELECT set_config('fazerai.app_password', :'app_password', false);
+SELECT set_config('mavikos.app_role', :'app_role', false);
+SELECT set_config('mavikos.app_password', :'app_password', false);
 
 -- Runtime role: explicit NOSUPERUSER + NOBYPASSRLS is load-bearing.
 --
@@ -37,8 +37,8 @@ SELECT set_config('fazerai.app_password', :'app_password', false);
 -- role actually HAS them, which is the one case that needs a superuser and deserves to fail loudly.
 DO $$
 DECLARE
-  v_role       text := current_setting('fazerai.app_role');
-  v_pw         text := current_setting('fazerai.app_password');
+  v_role       text := current_setting('mavikos.app_role');
+  v_pw         text := current_setting('mavikos.app_password');
   v_privileged boolean;
   v_createdb   boolean;
   v_createrole boolean;
@@ -88,7 +88,7 @@ ALTER DEFAULT PRIVILEGES IN SCHEMA public
 DO $$
 BEGIN
   IF current_setting('server_version_num')::int >= 160000 THEN
-    EXECUTE format('GRANT %I TO CURRENT_USER WITH SET TRUE', current_setting('fazerai.app_role'));
+    EXECUTE format('GRANT %I TO CURRENT_USER WITH SET TRUE', current_setting('mavikos.app_role'));
   END IF;
 END $$;
 

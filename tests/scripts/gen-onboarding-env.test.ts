@@ -14,7 +14,7 @@ describe("buildOnboardingEnv", () => {
     const migration = new URL(env.MIGRATION_DATABASE_URL);
     const runtime = new URL(env.DATABASE_URL);
     expect(migration.username).toBe("postgres");
-    expect(runtime.username).toBe("fazerai_app");
+    expect(runtime.username).toBe("mavikos_app");
     expect(migration.password).not.toBe(runtime.password);
     expect(migration.password.length).toBeGreaterThan(0);
     expect(runtime.password.length).toBeGreaterThan(0);
@@ -23,7 +23,7 @@ describe("buildOnboardingEnv", () => {
     expect(migration.hostname).toBe("postgres");
     expect(runtime.hostname).toBe("postgres");
     expect(migration.port).toBe("5432");
-    expect(runtime.pathname).toBe("/fazerai_agents_db");
+    expect(runtime.pathname).toBe("/mavikos_agentic_db");
 
     // The checkpointer pool is the runtime (non-superuser) role, never the migration URL.
     expect(env.LANGGRAPH_DATABASE_URL).toBe(env.DATABASE_URL);

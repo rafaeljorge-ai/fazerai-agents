@@ -132,8 +132,8 @@ async function runRoleDdl(client: Client, plan: RoleProvisioningPlan) {
   await client.query(`
     DO $$
     DECLARE
-      v_role text := current_setting('fazerai.app_role');
-      v_pw   text := current_setting('fazerai.app_password');
+      v_role text := current_setting('mavikos.app_role');
+      v_pw   text := current_setting('mavikos.app_password');
     BEGIN
       EXECUTE format('${ROLE_DDL[plan]}', v_role, v_pw);
     END $$;
@@ -297,7 +297,7 @@ async function provisionCheckpointerSchema(
       await client.query(`
         DO $$
         DECLARE
-          v_role text := current_setting('fazerai.app_role');
+          v_role text := current_setting('mavikos.app_role');
           r      record;
         BEGIN
           FOR r IN
@@ -469,10 +469,10 @@ async function main() {
 
     // Role + password handed to the DO block via session GUCs so the password is never spliced
     // into a SQL string we build (and never logged).
-    await client.query("SELECT set_config('fazerai.app_role', $1, false)", [
+    await client.query("SELECT set_config('mavikos.app_role', $1, false)", [
       role,
     ]);
-    await client.query("SELECT set_config('fazerai.app_password', $1, false)", [
+    await client.query("SELECT set_config('mavikos.app_password', $1, false)", [
       password,
     ]);
 
@@ -554,7 +554,7 @@ async function main() {
       DO $$
       BEGIN
         EXECUTE format('GRANT CONNECT, CREATE ON DATABASE %I TO %I',
-                       current_database(), current_setting('fazerai.app_role'));
+                       current_database(), current_setting('mavikos.app_role'));
       END $$;
     `);
 

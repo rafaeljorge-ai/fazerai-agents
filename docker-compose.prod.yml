@@ -102,7 +102,7 @@ services:
     image: 'pgvector/pgvector:pg17'
     restart: always
     environment:
-      - POSTGRES_DB=${DATABASE_NAME:-fazerai_agents_db}
+      - POSTGRES_DB=${DATABASE_NAME:-mavikos_agentic_db}
       - POSTGRES_USER=${POSTGRES_USER}
       - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
     volumes:

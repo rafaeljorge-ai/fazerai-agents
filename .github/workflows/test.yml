@@ -38,7 +38,7 @@ jobs:
     # row-level security is actually exercised, while the superuser one does DDL and the tests' own
     # setup and teardown. The credentials are throwaway and reachable only from inside this job.
     env:
-      TEST_APP_DATABASE_URL: postgres://fazerai_app:fazerai_app@localhost:5432/agents_ci_test
+      TEST_APP_DATABASE_URL: postgres://mavikos_app:mavikos_app@localhost:5432/agents_ci_test
       TEST_MIGRATION_DATABASE_URL: postgres://postgres:postgres@localhost:5432/agents_ci_test
 
     steps:
