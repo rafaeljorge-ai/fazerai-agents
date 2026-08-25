@@ -1,7 +1,7 @@
 # Contributor License Agreement
 
-Thank you for your interest in contributing to the fazer.ai agents Free edition (the
-"Project"), maintained by FAZER.AI LTDA ("we", "us"). This Contributor License Agreement
+Thank you for your interest in contributing to the mavikOS-agentic Free edition (the
+"Project"), maintained by Mavik.ai Solutions ("we", "us"). This Contributor License Agreement
 ("Agreement") states the terms under which You contribute to the Project. It protects
 You, us, and downstream users, and it lets us offer the Project under both its
 open-source license and a separate commercial (Pro) edition.
@@ -20,7 +20,7 @@ otherwise in writing at the time of a Contribution.
 
 ## 2. Copyright license
 
-You grant to FAZER.AI LTDA and to recipients of software distributed by us a perpetual,
+You grant to Mavik.ai Solutions and to recipients of software distributed by us a perpetual,
 worldwide, non-exclusive, royalty-free, irrevocable copyright license to reproduce,
 prepare derivative works of, publicly display, publicly perform, sublicense, and
 distribute Your Contributions and such derivative works, in source or object form, **under
@@ -33,7 +33,7 @@ Agreement transfers ownership: You grant a license, not an assignment.
 
 ## 3. Patent license
 
-You grant to FAZER.AI LTDA and to recipients of software distributed by us a perpetual,
+You grant to Mavik.ai Solutions and to recipients of software distributed by us a perpetual,
 worldwide, non-exclusive, royalty-free, irrevocable (except as stated in this section)
 patent license to make, have made, use, offer to sell, sell, import, and otherwise
 transfer Your Contributions. This license applies only to those patent claims licensable
