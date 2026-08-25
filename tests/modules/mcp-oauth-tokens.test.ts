@@ -100,12 +100,12 @@ describe.skipIf(!dbUp)("mcp oauth access tokens", () => {
   });
 
   // Brand rename compatibility window. We SIGN only the current issuer, but verify accepts the
-  // pre-rename one so access tokens minted by the previous image do not 401 mid-deploy. The window
+  // pre-rename ones so access tokens minted by the previous image do not 401 mid-deploy. The window
   // that has to be covered is the 15-minute access TTL — refresh tokens are opaque (no issuer), so
   // the first rotation after the upgrade already mints under the current one. Dropped at 2.0.
   test("we sign the current issuer", async () => {
     const { token } = await issue();
-    expect(decodeJwt(token).iss).toBe("fazerai:mcp");
+    expect(decodeJwt(token).iss).toBe("mavikos:mcp");
   });
 
   test("a token carrying the pre-rename issuer still verifies", async () => {
@@ -120,7 +120,7 @@ describe.skipIf(!dbUp)("mcp oauth access tokens", () => {
       .setProtectedHeader({ alg: "HS256" })
       .setSubject(String(userId))
       .setJti(jti)
-      .setIssuer("secretaria-v4:mcp")
+      .setIssuer("fazerai:mcp")
       .setAudience(mcpResourceId())
       .setExpirationTime("15m")
       .sign(new TextEncoder().encode(config.mcpJwtSecret));
@@ -157,7 +157,7 @@ describe.skipIf(!dbUp)("mcp oauth access tokens", () => {
       .setProtectedHeader({ alg: "HS256" })
       .setSubject(String(userId))
       .setJti("forged-aud")
-      .setIssuer("fazerai:mcp")
+      .setIssuer("mavikos:mcp")
       .setAudience("https://evil.example.com/api/v1/mcp")
       .setExpirationTime("15m")
       .sign(new TextEncoder().encode(config.mcpJwtSecret));
@@ -172,7 +172,7 @@ describe.skipIf(!dbUp)("mcp oauth access tokens", () => {
       .setProtectedHeader({ alg: "HS256" })
       .setSubject(String(userId))
       .setJti("forged")
-      .setIssuer("fazerai:mcp")
+      .setIssuer("mavikos:mcp")
       .setExpirationTime("15m")
       .sign(new TextEncoder().encode(config.jwtSecret));
     expect(await verifyAccessToken(appToken, suDb)).toBeNull();
