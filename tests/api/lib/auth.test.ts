@@ -173,9 +173,10 @@ describe("authPlugin", () => {
       expect(data.user).toBeNull();
     });
 
-    // Brand rename compatibility window. Sessions minted by the previous image carry
-    // `secretaria_v4_auth_token`; the current one issues and reads `fazerai_auth_token`. Reading
-    // both is what keeps an upgrade from logging every operator out. Dropped at 2.0.
+    // Brand rename compatibility window. Sessions minted by previous images carry
+    // `fazerai_auth_token` or `secretaria_v4_auth_token`; the current one issues and reads
+    // `mavikos_auth_token`. Reading all of them is what keeps an upgrade from logging every
+    // operator out. Dropped at 2.0.
     describe("session cookie name", () => {
       // Mints a real session JWT through setAuthCookie, then replays it as a raw Cookie header
       // under whichever name the caller wants to exercise.
@@ -205,22 +206,27 @@ describe("authPlugin", () => {
         const token = await mintToken();
         const res = await readerApp().handle(
           new BunRequest("http://localhost/whoami", {
-            headers: { Cookie: `fazerai_auth_token=${token}` },
+            headers: { Cookie: `mavikos_auth_token=${token}` },
           }),
         );
         expect((await res.json()).id).toBe(mockUser.id.toString());
       });
 
-      test("resolves a session sent under the pre-rename cookie name", async () => {
-        mockPrisma.user.findUnique.mockResolvedValueOnce(mockUser);
-        const token = await mintToken();
-        const res = await readerApp().handle(
-          new BunRequest("http://localhost/whoami", {
-            headers: { Cookie: `secretaria_v4_auth_token=${token}` },
-          }),
-        );
-        expect((await res.json()).id).toBe(mockUser.id.toString());
-      });
+      for (const legacyName of [
+        "fazerai_auth_token",
+        "secretaria_v4_auth_token",
+      ]) {
+        test(`resolves a session sent under the pre-rename cookie name ${legacyName}`, async () => {
+          mockPrisma.user.findUnique.mockResolvedValueOnce(mockUser);
+          const token = await mintToken();
+          const res = await readerApp().handle(
+            new BunRequest("http://localhost/whoami", {
+              headers: { Cookie: `${legacyName}=${token}` },
+            }),
+          );
+          expect((await res.json()).id).toBe(mockUser.id.toString());
+        });
+      }
 
       test("prefers the current name when both cookies are present", async () => {
         mockPrisma.user.findUnique.mockResolvedValueOnce(mockUser);
@@ -228,7 +234,7 @@ describe("authPlugin", () => {
         const res = await readerApp().handle(
           new BunRequest("http://localhost/whoami", {
             headers: {
-              Cookie: `fazerai_auth_token=${token}; secretaria_v4_auth_token=not.a.valid.jwt`,
+              Cookie: `mavikos_auth_token=${token}; fazerai_auth_token=not.a.valid.jwt`,
             },
           }),
         );
@@ -246,14 +252,14 @@ describe("authPlugin", () => {
           .get("/whoami", async ({ getAuthUser, cookie }) => {
             await getAuthUser();
             return {
-              current: cookie.fazerai_auth_token?.value ?? null,
-              legacyValue: cookie.secretaria_v4_auth_token?.value ?? null,
-              legacyMaxAge: cookie.secretaria_v4_auth_token?.maxAge ?? null,
+              current: cookie.mavikos_auth_token?.value ?? null,
+              legacyValue: cookie.fazerai_auth_token?.value ?? null,
+              legacyMaxAge: cookie.fazerai_auth_token?.maxAge ?? null,
             };
           });
         const res = await app.handle(
           new BunRequest("http://localhost/whoami", {
-            headers: { Cookie: `secretaria_v4_auth_token=${token}` },
+            headers: { Cookie: `fazerai_auth_token=${token}` },
           }),
         );
         const jar = await res.json();

@@ -143,7 +143,7 @@ const api = new Elysia()
             sessionCookie: {
               type: "apiKey",
               in: "cookie",
-              name: "fazerai_auth_token",
+              name: "mavikos_auth_token",
               description:
                 "Session JWT set by /api/auth/login (HttpOnly cookie).",
             },

@@ -9,11 +9,14 @@ import { ServiceUnavailableError } from "@/lib/errors";
 import { roleAtLeast } from "@/lib/tenancy";
 import { verifyApiKey } from "@/modules/api-keys/verify";
 
-const COOKIE_NAME = "fazerai_auth_token";
-// Compatibility window for the brand rename: sessions minted before it carry the old cookie name.
+const COOKIE_NAME = "mavikos_auth_token";
+// Compatibility window for the brand renames: sessions minted before them carry an old cookie name.
 // We READ it, then rewrite the same JWT under the new name and drop the old one, so an upgrade logs
 // nobody out and the legacy cookie is gone after one request. Dropped at 2.0.
-const LEGACY_COOKIE_NAME = "secretaria_v4_auth_token";
+const LEGACY_COOKIE_NAMES = [
+  "fazerai_auth_token",
+  "secretaria_v4_auth_token",
+] as const;
 const TOKEN_EXPIRY = "7d";
 const COOKIE_MAX_AGE_S = 60 * 60 * 24 * 7; // 7 days, matching TOKEN_EXPIRY
 
@@ -93,28 +96,35 @@ export const authPlugin = new Elysia({ name: "auth" })
       });
 
       cookie[COOKIE_NAME]?.set({ value: token, ...sessionCookieOptions() });
-      // A fresh login supersedes any pre-rename cookie; drop it so it can't outlive this session.
-      cookie[LEGACY_COOKIE_NAME]?.remove();
+      // A fresh login supersedes any pre-rename cookie; drop them so none outlives this session.
+      for (const legacyName of LEGACY_COOKIE_NAMES) {
+        cookie[legacyName]?.remove();
+      }
 
       return token;
     },
     clearAuthCookie() {
       cookie[COOKIE_NAME]?.remove();
-      cookie[LEGACY_COOKIE_NAME]?.remove();
+      for (const legacyName of LEGACY_COOKIE_NAMES) {
+        cookie[legacyName]?.remove();
+      }
     },
     async getAuthUser(): Promise<AuthUser | null> {
       let token = cookie[COOKIE_NAME]?.value;
       if (!token || typeof token !== "string") {
-        const legacy = cookie[LEGACY_COOKIE_NAME]?.value;
-        if (legacy && typeof legacy === "string") {
-          // Migrate in place. The token is verified below either way, so copying it under the new
-          // name grants a forged legacy cookie nothing it did not already have.
-          token = legacy;
-          cookie[COOKIE_NAME]?.set({
-            value: legacy,
-            ...sessionCookieOptions(),
-          });
-          cookie[LEGACY_COOKIE_NAME]?.remove();
+        for (const legacyName of LEGACY_COOKIE_NAMES) {
+          const legacy = cookie[legacyName]?.value;
+          if (legacy && typeof legacy === "string") {
+            // Migrate in place. The token is verified below either way, so copying it under the new
+            // name grants a forged legacy cookie nothing it did not already have.
+            token = legacy;
+            cookie[COOKIE_NAME]?.set({
+              value: legacy,
+              ...sessionCookieOptions(),
+            });
+            cookie[legacyName]?.remove();
+            break;
+          }
         }
       }
       if (!token || typeof token !== "string") {
