@@ -12,7 +12,7 @@ on:
 env:
   # NOTE: Edition-aware image name derived from the repo it runs in. In the master this is
   # disabled (gh workflow disable); it publishes only from the derived repos:
-  # fazer-ai/agents -> ghcr.io/fazer-ai/agents (Free), fazer-ai/agents-pro -> .../agents-pro (Pro).
+  # mavik-ai/fazerai-agents -> ghcr.io/mavik-ai/fazerai-agents (Free); a Pro repo would map the same way.
   GITHUB_REPO: ghcr.io/${{ github.repository }}
 
 jobs:

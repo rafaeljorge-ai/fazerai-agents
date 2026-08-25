@@ -4,7 +4,7 @@ services:
     # the Coolify service to the private Harbor image (project `agents`) AND register the Harbor
     # registry credential in Coolify (hub: create_registry_credential, per-user, same as Chatwoot Pro).
     # PLACEHOLDER: the public Free image is not published yet — swap `agents` once it exists.
-    image: '${AGENTS_IMAGE:-ghcr.io/fazer-ai/agents:latest}'
+    image: '${AGENTS_IMAGE:-ghcr.io/mavik-ai/fazerai-agents:latest}'
     pull_policy: always
     volumes:
       - 'storage:/app/storage'

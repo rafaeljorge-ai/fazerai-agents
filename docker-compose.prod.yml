@@ -19,7 +19,7 @@ services:
     # Edition-driven: Free (default, public image) vs Pro (set AGENTS_IMAGE to the private
     # Harbor image, project `agents`, after `docker login` — hub: create_registry_credential, per-user).
     # PLACEHOLDER: the public Free image is not published yet — swap `agents` once it exists.
-    image: ${AGENTS_IMAGE:-ghcr.io/fazer-ai/agents:latest}
+    image: ${AGENTS_IMAGE:-ghcr.io/mavik-ai/fazerai-agents:latest}
     pull_policy: always
     restart: always
     # NOTE: no `command` here on purpose — the image's default entrypoint already runs, in order:
