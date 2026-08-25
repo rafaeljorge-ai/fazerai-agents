@@ -54,9 +54,9 @@ describe("outbound webhook headers", () => {
     expect(
       verifyOutboundSignature("s3cr3t", ts, body, h[SIGNATURE_HEADER] ?? ""),
     ).toBe(true);
-    expect(DELIVERY_HEADER).toBe("x-fazerai-delivery");
-    expect(SIGNATURE_HEADER).toBe("x-fazerai-signature");
-    expect(TIMESTAMP_HEADER).toBe("x-fazerai-timestamp");
+    expect(DELIVERY_HEADER).toBe("x-mavikos-delivery");
+    expect(SIGNATURE_HEADER).toBe("x-mavikos-signature");
+    expect(TIMESTAMP_HEADER).toBe("x-mavikos-timestamp");
   });
 
   test("mirrors every header under its pre-rename name, byte for byte", () => {

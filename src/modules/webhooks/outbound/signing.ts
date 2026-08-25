@@ -5,17 +5,18 @@ import { createHmac, timingSafeEqual } from "node:crypto";
 // hex, with the unix-seconds timestamp sent alongside. Receivers verify the timestamp
 // window (anti-replay) and recompute over the raw body.
 
-export const SIGNATURE_HEADER = "x-fazerai-signature";
-export const TIMESTAMP_HEADER = "x-fazerai-timestamp";
-export const DELIVERY_HEADER = "x-fazerai-delivery";
+export const SIGNATURE_HEADER = "x-mavikos-signature";
+export const TIMESTAMP_HEADER = "x-mavikos-timestamp";
+export const DELIVERY_HEADER = "x-mavikos-delivery";
 
 // Compatibility window for the brand rename. These are the only renamed identifiers consumed
 // OUTSIDE our code: operators wired their receivers against the old names, and we only ever EMIT
 // them (nothing here reads them back). So every delivery carries BOTH sets, with identical values,
-// until 2.0 drops the legacy ones.
-export const LEGACY_SIGNATURE_HEADER = "x-secretaria-signature";
-export const LEGACY_TIMESTAMP_HEADER = "x-secretaria-timestamp";
-export const LEGACY_DELIVERY_HEADER = "x-secretaria-delivery";
+// until 2.0 drops the legacy ones. (The older x-secretaria-* set was dropped in this rename: this
+// fork never shipped it to an operator.)
+export const LEGACY_SIGNATURE_HEADER = "x-fazerai-signature";
+export const LEGACY_TIMESTAMP_HEADER = "x-fazerai-timestamp";
+export const LEGACY_DELIVERY_HEADER = "x-fazerai-delivery";
 
 export function signOutbound(
   secret: string,
