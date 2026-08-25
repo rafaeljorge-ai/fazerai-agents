@@ -19,6 +19,6 @@ export const updatesController = new Elysia({
     response: errors(401),
     detail: doc(
       "Operator announcements & update check",
-      "Active hub announcements (rendered as a top banner) plus whether a newer app version is available for this edition. Authenticated; global (not tenant-scoped); fail-open (empty when the hub is unreachable or disabled via FAZER_AI_HUB_URL).",
+      "Active hub announcements (rendered as a top banner) plus whether a newer app version is available for this edition. Authenticated; global (not tenant-scoped); fail-open (empty when the hub is unreachable or disabled via MAVIK_AI_HUB_URL).",
     ),
   });

@@ -45,6 +45,9 @@ const {
   TRUST_PROXY,
   TRUSTED_PROXY_HOPS,
   BUN_PUBLIC_EDITION,
+  MAVIK_AI_HUB_URL,
+  // NOTE: pre-rename spelling, read as a fallback so an existing deploy's env keeps working.
+  // Dropped at 2.0.
   FAZER_AI_HUB_URL,
   AGENTS_UPDATE_CHECK_URL,
   HUB_UPDATES_TTL_MS,
@@ -473,7 +476,7 @@ const config = {
   hub: {
     // NOTE: trim before stripping trailing slashes so a padded or whitespace-only value resolves to
     // "" (disabled) instead of a malformed URL.
-    url: (FAZER_AI_HUB_URL ?? "https://app.fazer.ai")
+    url: (MAVIK_AI_HUB_URL ?? FAZER_AI_HUB_URL ?? "https://app.fazer.ai")
       .trim()
       .replace(/\/+$/, ""),
     // NOTE: Optional override for the VERSION check only (a fork with its own release cadence points
