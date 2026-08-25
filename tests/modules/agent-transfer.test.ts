@@ -7,6 +7,7 @@ import type { TenantContext } from "@/lib/tenancy";
 import { TOOL_INSTRUCTIONS_MAX } from "@/modules/agents/text-caps";
 import {
   type AgentExport,
+  agentExportSchema,
   exportAgent,
   importAgent,
 } from "@/modules/agents/transfer";
@@ -149,9 +150,17 @@ describe.skipIf(!dbUp)("agent export/import", () => {
     await appDb.$disconnect();
   });
 
+  // Brand rename compatibility window: bundles exported before it carry `fazer-ai.agent`; the
+  // import schema accepts both kinds while exports only ever write the new one. Dropped at 2.0.
+  test("import still accepts a bundle exported under the pre-rename kind", async () => {
+    const exp = await exportAgent(ctx(), agentId, appDb);
+    const parsed = agentExportSchema.parse({ ...exp, kind: "fazer-ai.agent" });
+    expect(parsed.kind).toBe("fazer-ai.agent");
+  });
+
   test("export references by name and carries no secret value", async () => {
     const exp = await exportAgent(ctx(), agentId, appDb);
-    expect(exp.kind).toBe("fazer-ai.agent");
+    expect(exp.kind).toBe("mavik-ai.agent");
     expect(exp.agent.name).toBe("Vendedora");
     // credentialRef is a NAME, not a secret
     expect(exp.agent.modelConfig.credentialRef).toBe("llm-key");

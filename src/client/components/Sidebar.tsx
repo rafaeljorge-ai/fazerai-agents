@@ -286,7 +286,7 @@ function SidebarVersion({ collapsed = false }: { collapsed?: boolean }) {
   const isPro = !IS_FREE;
   const proLabel = t("edition.pro", "Pro");
   // The specific release page when the source provides one (Free/GitHub), else the public repo's
-  // releases list. Always fazer-ai/agents — in Pro too (its own repo is private), never the hub.
+  // releases list. Always mavik-ai/fazerai-agents — in Pro too (its own repo is private), never the hub.
   // releaseUrl is hub-authored, so only trust an allowlisted http(s) value; otherwise fall back.
   const upgradeHref =
     update.releaseUrl && isSafeHttpUrl(update.releaseUrl)

@@ -63,7 +63,11 @@ import {
   toDto,
 } from "./service";
 
-export const AGENT_EXPORT_KIND = "fazer-ai.agent";
+export const AGENT_EXPORT_KIND = "mavik-ai.agent";
+// Compatibility window for the brand rename: exports produced before it carry the old kind. Import
+// accepts both so an operator's saved bundles keep importing; we only ever WRITE the new one.
+// Dropped at 2.0.
+export const LEGACY_AGENT_EXPORT_KIND = "fazer-ai.agent";
 export const AGENT_EXPORT_VERSION = 1;
 
 const exportedGrantSchema = z.discriminatedUnion("source", [
@@ -244,7 +248,9 @@ export const EXPORTED_COMPONENT_KEYS = Object.keys(
 
 export const agentExportSchema = z.object({
   version: z.literal(AGENT_EXPORT_VERSION),
-  kind: z.literal(AGENT_EXPORT_KIND),
+  kind: z
+    .literal(AGENT_EXPORT_KIND)
+    .or(z.literal(LEGACY_AGENT_EXPORT_KIND)),
   // Informational provenance (item 2): where/when this export came from. Optional so older exports
   // and hand-written payloads still import.
   meta: z
