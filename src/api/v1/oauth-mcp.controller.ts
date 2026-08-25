@@ -80,7 +80,7 @@ function dcrClientName(): string {
   } catch {
     // keep the raw publicUrl if it does not parse
   }
-  return `fazer.ai agents (${host})`;
+  return `mavikOS-agentic (${host})`;
 }
 
 // Loads + decrypts an mcp_oauth credential (with its baseUrl) within the tenant scope. Throws if

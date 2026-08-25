@@ -63,4 +63,4 @@ Duas regras que valem em todo ponto: (1) uma ação que grava algo roda primeiro
 
 ## Estilo
 
-- PT-BR com acentuação correta. Nada de em-dash (use vírgula/ponto/dois-pontos). `fazer.ai` sempre minúsculo (slugs `fazer-ai` ok).
+- PT-BR com acentuação correta. Nada de em-dash (use vírgula/ponto/dois-pontos). `mavik.ai` sempre minúsculo (slugs `mavik-ai` ok).

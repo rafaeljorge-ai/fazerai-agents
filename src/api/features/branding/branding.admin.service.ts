@@ -8,7 +8,7 @@ import type {
 
 // Branding mutation stub: color/asset writes require the Pro edition and refuse with a 403 that the
 // client turns into an upgrade prompt. Reads (getGlobalBranding/readBrandingAsset) stay public and
-// live in branding.service, so the default fazer.ai identity still renders in the Free edition.
+// live in branding.service, so the default mavik.ai identity still renders in the Free edition.
 
 export async function updateBrandingColors(
   _input: ColorUpdate,

@@ -5,7 +5,7 @@ import {
 
 // The auth-page footer: "© {year} {brandName}". The brand name follows the global white-label
 // config. When it is the default it links to the product site; a custom brand renders as plain
-// text (linking a white-label brand back to fazer.ai would be misleading).
+// text (linking a white-label brand back to mavik.ai would be misleading).
 export function BrandFooter() {
   const { brandName } = useBranding();
   const year = new Date().getFullYear();
@@ -17,7 +17,7 @@ export function BrandFooter() {
         {year}{" "}
         {isDefault ? (
           <a
-            href="https://fazer.ai"
+            href="https://mavikai.com.br"
             className="text-text-secondary hover:text-text-primary hover:underline"
             target="_blank"
             rel="noopener noreferrer"

@@ -1,4 +1,4 @@
-// fazer.ai agents — schema base.
+// mavikOS-agentic — schema base.
 //
 // Multi-tenancy: every tenant-scoped table carries `tenant_id` and is protected by
 // Postgres RLS (defined in the migrations, since Prisma does not model RLS). The

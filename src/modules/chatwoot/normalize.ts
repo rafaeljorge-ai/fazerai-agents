@@ -210,7 +210,7 @@ export function parseLiveConversation(
 
 // Attribution = source of truth. The bot owns a conversation only while NO human is assigned
 // (assignee_type !== "User") and it is still pending. A human assignee (handoff) or a
-// resolved/snoozed/open status means fazer.ai agents stays silent. The gate is OUR responsibility:
+// resolved/snoozed/open status means mavikOS-agentic stays silent. The gate is OUR responsibility:
 // Chatwoot delivers the event to the bot even when a human is assigned.
 //
 // One Agent Bot can front many inboxes, and Chatwoot also delivers an event to a conversation's

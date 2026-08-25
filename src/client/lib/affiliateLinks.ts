@@ -1,4 +1,4 @@
-// Affiliate/referral links: signing up through these helps fund fazer.ai, so they render with the
+// Affiliate/referral links: signing up through these helps fund mavik.ai, so they render with the
 // "create one through our link to help us out" copy. Keyed by the secret-type `kind` id.
 export const AFFILIATE_LINKS: Record<string, string> = {
   asaas: "https://www.asaas.com/r/5ec90fd5-677d-40c7-b577-cc1f6de62fec",

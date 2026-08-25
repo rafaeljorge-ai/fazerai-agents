@@ -135,7 +135,7 @@ interface SidebarFooterProps {
 }
 
 // Label for a white-labeled website link: the hostname reads like the default
-// entry ("fazer.ai") instead of dumping the full URL into the sidebar.
+// entry ("mavik.ai") instead of dumping the full URL into the sidebar.
 function hostnameOf(url: string): string {
   try {
     return new URL(url).hostname;

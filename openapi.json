@@ -1,14 +1,14 @@
 {
   "openapi": "3.1.0",
   "info": {
-    "title": "agents API",
-    "description": "REST surface for the fazer.ai agents operator console. Dev-only documentation, auto-generated from the route schemas.",
+    "title": "mavikos-agentic API",
+    "description": "REST surface for the mavikOS-agentic operator console. Dev-only documentation, auto-generated from the route schemas.",
     "version": "0.0.0"
   },
   "servers": [
     {
       "url": "{baseUrl}",
-      "description": "Your self-hosted fazer.ai agents instance",
+      "description": "Your self-hosted mavikOS-agentic instance",
       "variables": {
         "baseUrl": {
           "default": "http://localhost:3000/api",

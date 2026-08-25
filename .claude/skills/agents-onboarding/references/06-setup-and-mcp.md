@@ -18,19 +18,19 @@ O `/setup` cria **um** tenant a partir do `companyName` que quem preenche o form
 Toda a config do mavikOS-agentic (import do agente, vault, tenant-settings, KB, deployment/bind) é **exclusivamente via MCP tools**: elas carregam dry-run + audit + o fence de tenant. As tools de MCP só carregam no **boot** da sessão, e a **ordem do reinício muda por harness**: o Claude autentica na TUI (`/mcp`), que exige o server já carregado no boot, então reinicia **antes** de autenticar; Codex/Hermes autenticam por comando de CLI, então reiniciam **depois**. Endpoint MCP do mavikOS-agentic: **`https://agents.<seu-dominio>/api/v1/mcp`** — use o path completo `/api/v1/mcp`. A raiz `https://agents.<seu-dominio>` ou um `.../mcp` sem o `/api/v1` cai na SPA e o login OAuth falha com `invalid_target` (o servidor liga o token ao recurso canônico `.../api/v1/mcp`). Discovery em `docs/mcp.md`.
 
 **Claude Code** (reinicie ANTES de autenticar):
-1. **Adicione** (transport HTTP, com o path completo): `claude mcp add --transport http fazer-ai https://agents.<seu-dominio>/api/v1/mcp`. O server entra no config, mas **não** aparece na sessão atual nem no `/mcp` (a sessão leu o config no boot).
-2. **Reinicie a sessão** (feche e reabra o `claude` no mesmo dir). Só agora o `/mcp` lista `fazer-ai` como **"Needs authentication"** (esperado, não é falha).
-3. **Autentique:** `/mcp` → `fazer-ai` → **Authenticate** → browser; o usuário loga com o admin do `/setup` (SUPER_ADMIN) e aprova os escopos (`mcp:read/write/admin`). Ao voltar **"Connected"**, as tools carregam **na mesma sessão, sem 2º reinício**.
+1. **Adicione** (transport HTTP, com o path completo): `claude mcp add --transport http mavik-ai https://agents.<seu-dominio>/api/v1/mcp`. O server entra no config, mas **não** aparece na sessão atual nem no `/mcp` (a sessão leu o config no boot).
+2. **Reinicie a sessão** (feche e reabra o `claude` no mesmo dir). Só agora o `/mcp` lista `mavik-ai` como **"Needs authentication"** (esperado, não é falha).
+3. **Autentique:** `/mcp` → `mavik-ai` → **Authenticate** → browser; o usuário loga com o admin do `/setup` (SUPER_ADMIN) e aprova os escopos (`mcp:read/write/admin`). Ao voltar **"Connected"**, as tools carregam **na mesma sessão, sem 2º reinício**.
 
 **Codex / Hermes** (autentique por CLI, depois reinicie):
 1. **Adicione + logue** (com o path completo). Codex — o **`--url` é obrigatório**:
    ```sh
-   codex mcp add fazer-ai --url https://agents.<seu-dominio>/api/v1/mcp
-   codex mcp login fazer-ai
+   codex mcp add mavik-ai --url https://agents.<seu-dominio>/api/v1/mcp
+   codex mcp login mavik-ai
    ```
-   **Sem o `--url`, o Codex grava a URL como `command`** (servidor stdio) e o login morre com `OAuth login is only supported for streamable HTTP servers`. Confira com `codex mcp list`: a URL tem que aparecer na coluna de URL/HTTP, e a coluna **Auth não pode estar `Unsupported`**. Se errou, `codex mcp remove fazer-ai` e refaça com `--url`.
+   **Sem o `--url`, o Codex grava a URL como `command`** (servidor stdio) e o login morre com `OAuth login is only supported for streamable HTTP servers`. Confira com `codex mcp list`: a URL tem que aparecer na coluna de URL/HTTP, e a coluna **Auth não pode estar `Unsupported`**. Se errou, `codex mcp remove mavik-ai` e refaça com `--url`.
 
-   Hermes: `hermes -p fazer-ai mcp add fazer-ai --url https://agents.<seu-dominio>/api/v1/mcp --auth oauth` + `hermes -p fazer-ai mcp login fazer-ai`. O `login` abre o browser pro mesmo login SUPER_ADMIN.
+   Hermes: `hermes -p mavik-ai mcp add mavik-ai --url https://agents.<seu-dominio>/api/v1/mcp --auth oauth` + `hermes -p mavik-ai mcp login mavik-ai`. O `login` abre o browser pro mesmo login SUPER_ADMIN.
 2. **Reinicie a sessão.** As tools carregam no boot seguinte.
 
 O access token fica no store de MCP do harness, não conosco (`guardrails.md`).
@@ -53,7 +53,7 @@ Cada flag existe para tirar uma ambiguidade do diagnóstico. Sem `-fsS`, um 404/
 
 **Autorizou mas só veio `mcp:read`.** Os escopos são cortados pelo papel de **quem está logado no browser** na hora do consentimento (`mcp:write` exige ≥ TENANT_ADMIN, `mcp:admin` exige SUPER_ADMIN). Se a tela mostrou um escopo só, você aprovou logado com outra conta: saia dessa sessão no browser, entre com o admin do `/setup` (SUPER_ADMIN) e refaça o `mcp login`. A página `/mcp` do console mostra, para a conta logada, quais escopos ela pode receber.
 
-**GATE DURO (escopo temporal: vale a partir DESTA etapa, com o add+login acima já feitos — antes da etapa 6 a ausência das tools é o estado normal e não aciona este gate). Se as tools `fazer-ai` (`whoami`, `tenant_list`, `agent_import`, …) NÃO estão expostas nesta sessão:**
+**GATE DURO (escopo temporal: vale a partir DESTA etapa, com o add+login acima já feitos — antes da etapa 6 a ausência das tools é o estado normal e não aciona este gate). Se as tools `mavik-ai` (`whoami`, `tenant_list`, `agent_import`, …) NÃO estão expostas nesta sessão:**
 
 - **PARE e peça ao usuário pra completar o passo do harness dele** (Claude: **reiniciar → `/mcp` Authenticate**; Codex/Hermes: **`mcp login` → reiniciar**), confirmando o Authenticate/login **e** o reinício. Espere ele voltar. Esse é o **único** caminho.
 - **NUNCA contorne.** É **proibido**, para qualquer config do mavikOS-agentic: chamar a **API REST direto** (mintar API key, cookie + `x-tenant-id`); fazer requisições ao endpoint `/api/v1/mcp` **por fora do harness**; **ler o código-fonte/bundle do mavikOS-agentic** (`/app/src`, `/app/dist`) pra descobrir endpoints internos; montar **OAuth manual**. Esses bypasses pulam dry-run/audit/fence, são frágeis, e **não provam o MCP**, que é o produto que esta run existe pra validar.

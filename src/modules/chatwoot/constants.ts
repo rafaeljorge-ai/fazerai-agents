@@ -1,4 +1,4 @@
-// The HTTP header fazer.ai agents uses to authenticate to a Chatwoot instance.
+// The HTTP header mavikOS-agentic uses to authenticate to a Chatwoot instance.
 //
 // Chatwoot documents this header as `api_access_token` (underscore), but reverse proxies DROP request
 // headers whose names contain underscores — a long-standing CGI/RFC-3875 ambiguity defense (both `-`

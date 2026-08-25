@@ -221,7 +221,7 @@ function buildBody(a: ClaimedAlert): { rawBody: string; contentType: string } {
   const times = a.count > 1 ? ` (×${a.count})` : "";
   if (a.type === "discord") {
     const icon = a.level === "error" ? "🔴" : "🟠";
-    const content = `${icon} **fazer.ai agents** \`${a.stage ?? "—"}\` ${a.level}${times}\n${a.summary}`;
+    const content = `${icon} **mavikOS-agentic** \`${a.stage ?? "—"}\` ${a.level}${times}\n${a.summary}`;
     return {
       rawBody: JSON.stringify({ content: clipText(content, 1900) }),
       contentType: "application/json",

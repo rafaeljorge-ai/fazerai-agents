@@ -50,7 +50,7 @@ function writeCache(config: BrandingData): void {
 // The white-label display name when none is configured (the product's own brand).
 // Exported so consumers (e.g. the auth-page footer) can tell the default apart
 // from an operator-configured name without re-hardcoding the string.
-export const DEFAULT_BRAND_NAME = "fazer.ai agents";
+export const DEFAULT_BRAND_NAME = "mavikOS-agentic";
 
 interface BrandingContextValue {
   config: BrandingData | null;

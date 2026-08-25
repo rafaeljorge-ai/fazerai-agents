@@ -72,7 +72,7 @@ export async function resolveLangfuseConfig(
   };
 }
 
-const REDACTED = "[redacted by fazer.ai PII policy]";
+const REDACTED = "[redacted by mavik.ai PII policy]";
 
 // When content must not leave the process, replace every I/O payload with a marker. The trace
 // keeps its shape (spans, timings, usage); only the text is gone.

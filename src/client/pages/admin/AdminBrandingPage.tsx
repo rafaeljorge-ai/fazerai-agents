@@ -5,7 +5,7 @@ import { ProGate } from "@/client/components";
 import { useAuth } from "@/client/contexts/AuthContext";
 
 // Branding tab in the Free edition: white-label customization (name, colors, logo, favicon) is a Pro
-// feature, so the editor is replaced by an upgrade gate. The app still renders the default fazer.ai
+// feature, so the editor is replaced by an upgrade gate. The app still renders the default mavik.ai
 // identity, served by the public GET /v1/branding.
 
 export function AdminBrandingPage() {

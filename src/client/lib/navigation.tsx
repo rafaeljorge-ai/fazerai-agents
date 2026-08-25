@@ -149,28 +149,28 @@ export interface SupportContact {
 // The email itself is i18n-driven so projects can route support to a
 // locale-specific inbox. Set to null to hide the support block entirely.
 // t('nav.support', 'Support')
-// t('support.email', 'support@fazer.ai')
+// t('support.email', 'suporte@mavikai.com.br')
 export const SUPPORT_LINK: SupportContact | null = {
   emailKey: "support.email",
-  defaultEmail: "support@fazer.ai",
+  defaultEmail: "suporte@mavikai.com.br",
   labelKey: "nav.support",
   defaultLabel: "Support",
   icon: LifeBuoy,
 };
 
-// t('nav.website', 'fazer.ai')
+// t('nav.website', 'mavik.ai')
 // t('nav.github', 'GitHub')
 // Always the public open-source repo — even in Pro/Full (whose own repo is private): the user can
 // only open the public one. Used for the footer GitHub link AND the "new version" upgrade link, so
-// both point at fazer-ai/agents regardless of edition (never the hub).
-export const AGENTS_REPO_URL = "https://github.com/fazer-ai/agents";
+// both point at mavik-ai/fazerai-agents regardless of edition (never the hub).
+export const AGENTS_REPO_URL = "https://github.com/mavik-ai/fazerai-agents";
 
 export const SECONDARY_LINKS: FooterLink[] = [
   {
     id: "website",
-    href: "https://fazer.ai",
+    href: "https://mavikai.com.br",
     labelKey: "nav.website",
-    defaultLabel: "fazer.ai",
+    defaultLabel: "mavik.ai",
     icon: Globe,
   },
   {

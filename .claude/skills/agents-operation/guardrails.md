@@ -23,4 +23,4 @@ Valem em qualquer execução desta skill. Cruzar qualquer uma é **parar e pergu
 
 - PT-BR com acentuação correta (escreva "não"/"ação", nunca "nao"/"acao").
 - Nada de em-dash (—) nem en-dash (–): use vírgula, ponto, dois-pontos, parênteses ou reescreva.
-- `fazer.ai` sempre minúsculo (slugs `fazer-ai` ok).
+- `mavik.ai` sempre minúsculo (slugs `mavik-ai` ok).

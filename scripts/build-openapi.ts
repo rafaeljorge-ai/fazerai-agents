@@ -23,7 +23,7 @@ const DOCS_JSON_PATH = "/api/docs/json";
 // adds is kept: it is the SUPER_ADMIN tenant selector, useful to a self-hosting operator.
 const API_SERVER = {
   url: "{baseUrl}",
-  description: "Your self-hosted fazer.ai agents instance",
+  description: "Your self-hosted mavikOS-agentic instance",
   variables: {
     baseUrl: {
       default: "http://localhost:3000/api",
