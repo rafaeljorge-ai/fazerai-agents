@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # Portainer brownfield discovery (read-only): inventory the existing Portainer + its containers,
 # fingerprint each by image, and decide per-service (reuse healthy / install missing / flag incompatible)
-# for the fazer.ai agents onboarding. Mirror of the Coolify brownfield-probe.sh, but Portainer-API-native.
+# for the mavikOS-agentic onboarding. Mirror of the Coolify brownfield-probe.sh, but Portainer-API-native.
 # Env: PORTAINER_API_KEY, PORTAINER_ENDPOINT_ID, optional PORTAINER_URL (default https://localhost:9443).
 import json, ssl, os, urllib.request
 

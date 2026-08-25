@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Coolify onboarding helper (Tier A) for fazer.ai agents. Wraps the FRAGILE, deterministic mechanics of
+# Coolify onboarding helper (Tier A) for mavikOS-agentic. Wraps the FRAGILE, deterministic mechanics of
 # driving a Coolify instance during onboarding so the agent CALLS them instead of hand-assembling shell:
 #   token           mint a root API token over SSH (artisan tinker; seeds currentTeam) -> 0600 file
 #   enable-api      flip is_api_enabled=true (psql over SSH); the API is OFF by default (403 otherwise)

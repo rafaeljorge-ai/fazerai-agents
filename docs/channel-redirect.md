@@ -87,7 +87,7 @@ Use the existing **official WhatsApp Cloud API** inbox (`Channel::Whatsapp`, pro
 Bind it to the agent under the agent editor's **Channels** tab (the persona bot must answer it so the
 webhook reaches the gate).
 
-### 3. fazer.ai agents — sync + configure the agent
+### 3. mavikOS-agentic — sync + configure the agent
 
 1. Under **Channels**, sync the instance's inboxes so both inboxes appear.
 2. Open the agent → **Redirect** tab → enable it, then:

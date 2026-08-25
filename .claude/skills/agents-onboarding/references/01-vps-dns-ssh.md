@@ -51,7 +51,7 @@ A API de chaves não serve aqui: `attach`/`create` registram a chave mas não a 
 ## DNS (MCP Hostinger, domínio `<seu-dominio>`)
 
 O **domínio raiz (`<seu-dominio>`) é escolha do usuário**: liste os domínios da conta (`domains_getDomainListV1`) e **pergunte qual usar como raiz**: nunca assuma um porque "estava na conta". Definido o raiz, crie os A-records apontando pra `<VPS_IP>` (os três da app são o contrato; ver 1c):
-- `agents.<seu-dominio>`: fazer.ai agents
+- `agents.<seu-dominio>`: mavikOS-agentic
 - `chatwoot.<seu-dominio>`: Chatwoot (Pro ou OSS)
 - `langfuse.<seu-dominio>`: Langfuse (recomendado)
 - **painel do orquestrador** (se houver e você quiser um domínio limpo): `coolify.` (Tier A) / `portainer.` (Tier B); outro painel usa o próprio; no compose genérico (Tier C) pode não haver painel.

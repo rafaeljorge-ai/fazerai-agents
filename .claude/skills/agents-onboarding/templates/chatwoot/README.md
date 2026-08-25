@@ -1,6 +1,6 @@
 # Chatwoot (self-hosted) for fazer.ai
 
-The inbox fazer.ai agents plugs into. The onboarding installs Chatwoot as part of the journey, in one of
+The inbox mavikOS-agentic plugs into. The onboarding installs Chatwoot as part of the journey, in one of
 **two editions**, chosen by whether the operator has a subscription on the fazer.ai hub:
 
 | Edition | Image | When | Extra features |
@@ -8,7 +8,7 @@ The inbox fazer.ai agents plugs into. The onboarding installs Chatwoot as part o
 | **Pro** | `harbor.fazer.ai/chatwoot/fazer-ai/chatwoot-pro` (private Harbor) | operator **has a hub license** | Kanban (+ other Pro-image features) |
 | **OSS** | `ghcr.io/fazer-ai/chatwoot` (our public fork) | **no** hub subscription | standard Chatwoot + Baileys WhatsApp provider |
 
-**Both editions work with fazer.ai agents**: the integration is the standard Chatwoot Agent Bot + API
+**Both editions work with mavikOS-agentic**: the integration is the standard Chatwoot Agent Bot + API
 (see `docs/chatwoot.md`). OSS is **not** a downgrade of compatibility, only of
 Pro-exclusive features (Kanban). The Baileys WhatsApp provider ships in **both** editions.
 
@@ -48,10 +48,10 @@ docker compose up -d
 **Portainer**: paste `docker-compose.yml` as a Stack and provide the same variables in the Stack env
 editor (for Pro, add `CHATWOOT_IMAGE` and register the Harbor credential under
 Registries first, or `Registries:[<id>]` in the API). Front `chatwoot.<domain>` with a TLS proxy: the
-fazer.ai agents [`docker-compose.portainer.yml`](../docker-compose.portainer.yml) bundled Caddy can do
+mavikOS-agentic [`docker-compose.portainer.yml`](../docker-compose.portainer.yml) bundled Caddy can do
 this (point a Caddy site at the published `CHATWOOT_PORT`); see the `agents-onboarding` skill (`references/deploy-b-portainer.md`).
 
-## Wire into fazer.ai agents
+## Wire into mavikOS-agentic
 
 After both are up (see `docs/chatwoot.md`): create a Chatwoot admin, mint an
 admin token, then from the agents register the deployment (`POST /v1/chatwoot/deployment {baseUrl, adminToken}`),

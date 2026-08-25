@@ -1,9 +1,9 @@
 ---
 name: agents-dev
-description: "Modo desenvolvedor do fazer.ai agents: trabalhar no código-fonte. Clona o repo (Free público ou Pro via git proxy do hub), orienta nas boas práticas e invariantes (separação Free/Full, aditividade e convenções de docs/), pergunta proativamente o que o usuário quer implementar e conduz a implementação, e ajuda a gerar a própria imagem de deploy. Use quando o usuário quer DESENVOLVER, estender ou contribuir com o código do fazer.ai agents, não apenas subir (onboarding) ou operar (operação) uma instância."
+description: "Modo desenvolvedor do mavikOS-agentic: trabalhar no código-fonte. Clona o repo (Free público ou Pro via git proxy do hub), orienta nas boas práticas e invariantes (separação Free/Full, aditividade e convenções de docs/), pergunta proativamente o que o usuário quer implementar e conduz a implementação, e ajuda a gerar a própria imagem de deploy. Use quando o usuário quer DESENVOLVER, estender ou contribuir com o código do mavikOS-agentic, não apenas subir (onboarding) ou operar (operação) uma instância."
 ---
 
-# Modo desenvolvedor do fazer.ai agents
+# Modo desenvolvedor do mavikOS-agentic
 
 Leva um desenvolvedor de "quero mexer no código" até "implementou com as boas práticas do projeto e, se quiser, gerou a própria imagem". Audiência: **desenvolvedor**, não operador. Para subir uma instância do zero use a skill `agents-onboarding`; para debugar/ajustar uma instância em produção use `agents-operation`.
 

@@ -1,6 +1,6 @@
 # Multi-tenancy & isolation
 
-fazer.ai agents is multi-tenant. Isolation is **hybrid and defense-in-depth**: a Prisma `$extends` layer auto-scopes writes, and **Postgres Row-Level Security (RLS) is the hard guarantee**. Both are load-bearing; never rely on one alone.
+mavikOS-agentic is multi-tenant. Isolation is **hybrid and defense-in-depth**: a Prisma `$extends` layer auto-scopes writes, and **Postgres Row-Level Security (RLS) is the hard guarantee**. Both are load-bearing; never rely on one alone.
 
 ## The non-negotiables
 

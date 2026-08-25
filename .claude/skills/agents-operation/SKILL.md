@@ -1,9 +1,9 @@
 ---
 name: agents-operation
-description: "Modo operação do fazer.ai agents: debugar conversas em produção e corrigir comportamentos inesperados do agente. Investiga (conversa no Chatwoot + ExecutionLog/flowlog + traces no Langfuse), reproduz no playground, ajusta o agente (prompt/ferramentas/behavior/KB) e re-valida, com toda mutação aprovada. Use quando uma instância JÁ em produção se comporta de forma inesperada e precisa de diagnóstico/ajuste, não é onboarding (subir do zero) nem desenvolvimento de código."
+description: "Modo operação do mavikOS-agentic: debugar conversas em produção e corrigir comportamentos inesperados do agente. Investiga (conversa no Chatwoot + ExecutionLog/flowlog + traces no Langfuse), reproduz no playground, ajusta o agente (prompt/ferramentas/behavior/KB) e re-valida, com toda mutação aprovada. Use quando uma instância JÁ em produção se comporta de forma inesperada e precisa de diagnóstico/ajuste, não é onboarding (subir do zero) nem desenvolvimento de código."
 ---
 
-# Modo operação do fazer.ai agents
+# Modo operação do mavikOS-agentic
 
 Pega uma instância **já em produção** que está se comportando de forma inesperada e leva de "a conversa do cliente deu errado" até "causa entendida, ajuste validado e aplicado com aprovação". Audiência: **operador de uma instância viva**. Para subir uma instância nova use `agents-onboarding`; para mexer no código-fonte use `agents-dev`.
 

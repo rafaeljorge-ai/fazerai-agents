@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Chatwoot admin access-token reader for the fazer.ai agents onboarding. The USER creates the first admin in
+# Chatwoot admin access-token reader for the mavikOS-agentic onboarding. The USER creates the first admin in
 # the Chatwoot onboarding screen (account gate); this reads that admin (by --email, or the single admin of
 # the first account when --email is omitted) and returns its API access token; it never creates an account or
 # user. Runs a Rails runner INSIDE the Chatwoot container over SSH,

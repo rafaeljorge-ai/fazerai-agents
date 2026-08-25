@@ -30,7 +30,7 @@ Caddyfile a partir do env no boot (`CADDY_DOMAIN` → o app; `PORTAINER_DOMAIN` 
   `portainer.<domínio>` → o IP do VPS. O ACME valida contra eles, então têm que resolver **antes** do deploy.
 - **Credenciais de registry** pras imagens privadas (configure uma vez no Portainer, passe `Registries:[id]`).
   Só o Harbor precisa: `ghcr.io/fazer-ai/agents` (Free), `pgvector` e `baileys-api` são **públicas**, puxam sem login.
-  - `harbor.fazer.ai` pro Chatwoot **Pro** (e fazer.ai agents Pro): a registry credential **per-user**, provisionada
+  - `harbor.fazer.ai` pro Chatwoot **Pro** (e mavikOS-agentic Pro): a registry credential **per-user**, provisionada
     pelo proxy do CLI (`bunx @fazer-ai/agents hub registry-credential --apply --out harbor.secret`; imprime o
     `username`, grava o secret em `harbor.secret`). Chatwoot OSS não precisa de registry privado.
 
@@ -128,7 +128,7 @@ descartam headers com underscore no nome (nginx tem `underscores_in_headers off`
 Chatwoot também descarta). Efeito: o mesmo admin token enviado ao Chatwoot **pelo Caddy** como
 `api_access_token` é rejeitado (401), enquanto **direto no puma** (sem proxy) autentica (200). O Rails
 (Rack) mapeia `-` e `_` pra mesma env var, então a grafia com **hífen** `api-access-token` é lida igual
-pelo Chatwoot **e** sobrevive ao Caddy (200). O fazer.ai agents **manda o hífen** por padrão, então `deployment_connect`
+pelo Chatwoot **e** sobrevive ao Caddy (200). O mavikOS-agentic **manda o hífen** por padrão, então `deployment_connect`
 e as tools HTTP do agente funcionam contra a URL pública fronteada pelo Caddy sem workaround. Se você
 escrever uma integração Chatwoot à mão, use `api-access-token`, nunca o underscore.
 

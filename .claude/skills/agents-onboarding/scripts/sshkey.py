@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# SSH key helper for the fazer.ai agents onboarding. Two jobs:
+# SSH key helper for the mavikOS-agentic onboarding. Two jobs:
 #   generate   create a dedicated ed25519 key and print the PUBLIC half for the operator to paste in the
 #              VPS panel. ssh-keygen is spawned with a DIRECT argv list (no shell) so the empty passphrase
 #              `-N ""` survives on every OS. Driven through a shell line, PowerShell DROPS the empty-string

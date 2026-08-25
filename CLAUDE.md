@@ -1,6 +1,6 @@
 # CLAUDE.md
 
-**fazer.ai agents** é uma aplicação fullstack TypeScript (**Bun + Elysia + React 19 + Tailwind CSS v4**, Prisma/PostgreSQL, JWT, i18n, Biome) que roda **LangGraph TS** no backend para orquestrar agentes de atendimento (IA) sobre o **Chatwoot** fazer.ai. Construída sobre o template **bunfire** (cujos invariantes seguem documentados abaixo). Multi-tenant (`tenant_id` em tudo, isolamento por Prisma `$extends` + RLS), "um core, três transportes" (REST v1, MCP server, UI projetam sobre os mesmos services), distribuição Free (open-source) vs Full.
+**mavikOS-agentic** é uma aplicação fullstack TypeScript (**Bun + Elysia + React 19 + Tailwind CSS v4**, Prisma/PostgreSQL, JWT, i18n, Biome) que roda **LangGraph TS** no backend para orquestrar agentes de atendimento (IA) sobre o **Chatwoot** (fork fazer.ai). Construída sobre o template **bunfire** (cujos invariantes seguem documentados abaixo). Multi-tenant (`tenant_id` em tudo, isolamento por Prisma `$extends` + RLS), "um core, três transportes" (REST v1, MCP server, UI projetam sobre os mesmos services), distribuição Free (open-source) vs Full.
 
 Guia detalhado por subsistema vive em [`docs/`](docs/); as seções abaixo cobrem o que não cabe lá ou que você deve manter em memória de trabalho.
 
@@ -201,7 +201,7 @@ When adding external dependencies (analytics, captcha, CDN), extend the relevant
 
 ## Branding
 
-- "fazer.ai" is always lowercase. "fazer-ai" is acceptable in slugs/identifiers. Never "Fazer.ai" or "Fazer.AI"
+- "mavik.ai" is always lowercase in this codebase. "mavik-ai" is acceptable in slugs/identifiers. Never "Mavik.AI" or "MAVIK.AI". Legacy `fazer-ai`/`fazerai` identifiers (DB role, headers, upstream image/registry) remain until the identifier migration lands
 
 ## UX
 

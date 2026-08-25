@@ -2,10 +2,10 @@
 
 <picture>
   <source media="(prefers-color-scheme: dark)" srcset="public/assets/logo.png">
-  <img alt="fazer.ai agents" src="public/assets/logo-light.png" width="200">
+  <img alt="mavikOS-agentic" src="public/assets/logo-light.png" width="200">
 </picture>
 
-# fazer.ai agents
+# mavikOS-agentic
 
 **AI agents that run your customer service.**
 They talk like real people, schedule, collect payments and sell. Self-hosted, with any model.
@@ -23,7 +23,7 @@ They talk like real people, schedule, collect payments and sell. Self-hosted, wi
 
 ---
 
-**fazer.ai agents** is the self-hosted platform for AI agents that take on your customer service: they transcribe voice notes, read images, reply by text or voice, query the knowledge base, schedule, quote, collect payments, move the pipeline and know when to hand off to the human team. On WhatsApp and any other channel, all on your own infrastructure.
+**mavikOS-agentic** is the self-hosted platform for AI agents that take on your customer service: they transcribe voice notes, read images, reply by text or voice, query the knowledge base, schedule, quote, collect payments, move the pipeline and know when to hand off to the human team. On WhatsApp and any other channel, all on your own infrastructure.
 
 ### Highlights
 
@@ -35,7 +35,7 @@ They talk like real people, schedule, collect payments and sell. Self-hosted, wi
 
 ## 🚀 Get started
 
-From the first command to an agent answering on WhatsApp, driven by an **AI agent in your terminal**. A single line installs the CLI, authenticates with fazer.ai, connects the MCPs and installs the onboarding skill, which brings up the full stack (Chatwoot + fazer.ai agents + observability, with TLS) on a VPS and validates the instance end to end.
+From the first command to an agent answering on WhatsApp, driven by an **AI agent in your terminal**. A single line installs the CLI, authenticates with mavik.ai, connects the MCPs and installs the onboarding skill, which brings up the full stack (Chatwoot + mavikOS-agentic + observability, with TLS) on a VPS and validates the instance end to end.
 
 **macOS and Linux**
 
@@ -145,11 +145,11 @@ bun dev                   # http://localhost:3000
 
 ## Links
 
-- 🌐 Website: [fazer.ai](https://fazer.ai)
+- 🌐 Website: [mavik.ai](https://mavikai.com.br)
 - 📚 Documentation: [`docs/`](docs/)
 - 🤝 Contributing: [CONTRIBUTING-en.md](CONTRIBUTING-en.md)
-- 💬 Support: support@fazer.ai
+- 💬 Support: suporte@mavikai.com.br
 
 <div align="center">
-<sub>Free under Apache 2.0 · Pro under a proprietary EULA · made with ☕ by fazer.ai</sub>
+<sub>Free under Apache 2.0 · Pro under a proprietary EULA · made with ☕ by mavik.ai</sub>
 </div>

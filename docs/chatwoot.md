@@ -1,6 +1,6 @@
 # Chatwoot integration (dual identity)
 
-fazer.ai agents talks to a Chatwoot account through **two token profiles over one HTTP client**, receives Agent Bot webhooks on a **dedicated receiver**, and obeys the rule **attribution = source of truth** (the bot acts only while no human owns the conversation). The agent runtime that decides replies lives in [`graph.md`](graph.md); this doc covers the transport, auth, provisioning, and gate.
+mavikOS-agentic talks to a Chatwoot account through **two token profiles over one HTTP client**, receives Agent Bot webhooks on a **dedicated receiver**, and obeys the rule **attribution = source of truth** (the bot acts only while no human owns the conversation). The agent runtime that decides replies lives in [`graph.md`](graph.md); this doc covers the transport, auth, provisioning, and gate.
 
 Payload shapes, the HMAC scheme, the bot-token capabilities, and the ack/timeout behavior below were confirmed by reading Chatwoot's Agent Bot webhook source, not guessed: `lib/webhooks/trigger.rb`, `app/listeners/agent_bot_listener.rb`, `app/jobs/agent_bots/webhook_job.rb`, `app/presenters/conversations/event_data_presenter.rb`, `app/models/{message,attachment,contact}.rb`, `app/controllers/concerns/access_token_auth_helper.rb` (the `BOT_ACCESSIBLE_ENDPOINTS` allowlist).
 

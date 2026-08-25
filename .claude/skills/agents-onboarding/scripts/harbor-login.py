@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# Harbor (private registry) login on the VPS for the fazer.ai agents onboarding. Runs `docker login
+# Harbor (private registry) login on the VPS for the mavikOS-agentic onboarding. Runs `docker login
 # --password-stdin` over SSH so the robot secret never lands in argv / ps / shell history, and the robot
 # username (which contains a "$", e.g. robot$project, a shell-expansion footgun, same family as the
 # Coolify token's "|") is decoded in-shell from base64 and passed quoted. The credential comes from the

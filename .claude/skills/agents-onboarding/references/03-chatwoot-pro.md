@@ -4,11 +4,11 @@
 
 Leia `~/.fazer-ai/onboarding.json` → `chatwootSource`. Se **`existing`** (Chatwoot BYO), **PULE este doc inteiro**: não há Chatwoot a provisionar, `chatwoot.<seu-dominio>` é a instância que **já está no ar** (não a crie nem lhe mexa). Detecte Pro/OSS pela imagem (etapa 1b), vá direto ao **bind (etapa 9)** e trate a **etapa 9b (licenciar)** como opcional (só se for um Pro sem Kanban e o usuário quiser). Todo o resto abaixo é só pra **`new`**.
 
-> **Avise o usuário onde você está** (quando o Chatwoot é `new`): o Chatwoot é o **2º serviço** do deploy (a plataforma de atendimento onde as conversas acontecem; vem depois do painel, antes do fazer.ai agents e do Langfuse). Diga que vai subir o Chatwoot agora e que leva alguns minutos; dê sinal de vida durante a espera longa (imagem baixando) e confirme ao terminar, anunciando o próximo. Ver o princípio de narração em `SKILL.md`.
+> **Avise o usuário onde você está** (quando o Chatwoot é `new`): o Chatwoot é o **2º serviço** do deploy (a plataforma de atendimento onde as conversas acontecem; vem depois do painel, antes do mavikOS-agentic e do Langfuse). Diga que vai subir o Chatwoot agora e que leva alguns minutos; dê sinal de vida durante a espera longa (imagem baixando) e confirme ao terminar, anunciando o próximo. Ver o princípio de narração em `SKILL.md`.
 
 ## Primeiro (source `new`): leia o marcador e ramifique (Pro vs OSS)
 
-Leia `~/.fazer-ai/onboarding.json` → `chatwootTier`. Eixo **independente** da edição do fazer.ai agents (`edition`, etapa 4). Marcador ausente → fallback pelo hub (`bunx @fazer-ai/agents hub licenses`): licença CHATWOOT disponível → Pro; senão OSS.
+Leia `~/.fazer-ai/onboarding.json` → `chatwootTier`. Eixo **independente** da edição do mavikOS-agentic (`edition`, etapa 4). Marcador ausente → fallback pelo hub (`bunx @fazer-ai/agents hub licenses`): licença CHATWOOT disponível → Pro; senão OSS.
 
 - **`community` (OSS)** → imagem **pública** `ghcr.io/fazer-ai/chatwoot:latest` (nosso fork). O `baileys-api` **roda também no OSS** (imagem pública `ghcr.io/fazer-ai/baileys-api`, parte do fork — **não** remova). **NÃO** rode `docker login` nem provisione credencial do Harbor (não há licença e o pull do Chatwoot é público). Deploy pelo compose genérico (`templates/chatwoot/`, ver `templates/chatwoot/README.md`); no Coolify, setar `CHATWOOT_IMAGE=ghcr.io/fazer-ai/chatwoot:latest` no `templates/chatwoot/docker-compose.coolify.yml` (mantendo o `baileys-api`). **Pule a etapa 9b** (licenciar). O resto deste doc (Harbor + imagem privada) é **só Pro** — o que o Pro adiciona é o **Kanban** (imagem privada), não o Baileys.
 - **`pro`** → siga abaixo (Harbor + Coolify API + `docker login` + etapa 9b).
@@ -22,7 +22,7 @@ Este é passo **seu** de execução, não uma pergunta: a edição (Pro/OSS) já
   ```sh
   bunx @fazer-ai/agents hub registry-credential --apply --out harbor.secret
   ```
-  Robot **per-user** (a MESMA cred cobre Chatwoot Pro e fazer.ai agents Pro), idempotente; grava o secret em `harbor.secret` (`0600`) e imprime só o `username`; o secret **nunca** sai no output. **Nunca** logar o secret.
+  Robot **per-user** (a MESMA cred cobre Chatwoot Pro e mavikOS-agentic Pro), idempotente; grava o secret em `harbor.secret` (`0600`) e imprime só o `username`; o secret **nunca** sai no output. **Nunca** logar o secret.
 - O compose é o vendorado `templates/chatwoot/docker-compose.coolify.yml` (não precisa extrair do hub).
 
 ## Deploy via API do Coolify

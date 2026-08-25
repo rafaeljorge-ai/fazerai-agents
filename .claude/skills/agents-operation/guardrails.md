@@ -17,7 +17,7 @@ Valem em qualquer execução desta skill. Cruzar qualquer uma é **parar e pergu
 ## Segredos
 
 - **Nenhum segredo em log, output, commit ou arquivo plano.** Ao exibir, mascare.
-- O fazer.ai agents referencia segredos por **nome de vault** (`vault:<id>`), nunca o valor; respeite: não tente extrair nem imprimir o plaintext. Credencial faltando → o usuário preenche no console fora de banda.
+- O mavikOS-agentic referencia segredos por **nome de vault** (`vault:<id>`), nunca o valor; respeite: não tente extrair nem imprimir o plaintext. Credencial faltando → o usuário preenche no console fora de banda.
 
 ## Estilo
 

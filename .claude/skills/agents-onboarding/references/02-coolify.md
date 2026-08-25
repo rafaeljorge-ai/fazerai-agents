@@ -1,6 +1,6 @@
 # 02: Coolify (reusar/instalar, API, Instance Domain)
 
-> **Avise o usuário onde você está:** o Coolify é o **1º serviço** do deploy (o painel que gerencia tudo; depois vêm Chatwoot, fazer.ai agents e Langfuse). Diga que vai começar por ele, e a instalação leva alguns minutos. Dê sinal de vida durante a espera longa (Docker + imagens baixando) em vez de sumir; ao terminar, confirme e anuncie o próximo. Ver o princípio de narração (e a contagem que se ajusta ao caso real) em `SKILL.md`.
+> **Avise o usuário onde você está:** o Coolify é o **1º serviço** do deploy (o painel que gerencia tudo; depois vêm Chatwoot, mavikOS-agentic e Langfuse). Diga que vai começar por ele, e a instalação leva alguns minutos. Dê sinal de vida durante a espera longa (Docker + imagens baixando) em vez de sumir; ao terminar, confirme e anuncie o próximo. Ver o princípio de narração (e a contagem que se ajusta ao caso real) em `SKILL.md`.
 
 ## Brownfield: reusar se já existe e está saudável
 
@@ -101,11 +101,11 @@ docker exec -i coolify-db psql -U coolify -d coolify
 
 ## Projeto + ambiente
 
-Crie (ou reaproveite) um projeto com o **nome padrão `fazer.ai agents`** (não perguntado; o operador renomeia depois no console se quiser) e o ambiente `production`. Os UUIDs (server/projeto/env/serviços) são **gerados a cada instalação**: descubra-os pela API/DB; nunca chumbe UUIDs de outra instalação.
+Crie (ou reaproveite) um projeto com o **nome padrão `mavikOS-agentic`** (não perguntado; o operador renomeia depois no console se quiser) e o ambiente `production`. Os UUIDs (server/projeto/env/serviços) são **gerados a cada instalação**: descubra-os pela API/DB; nunca chumbe UUIDs de outra instalação.
 
 ## Registry privado do Harbor (só Pro)
 
-Imagens **Pro** (Chatwoot `chatwoot-pro`; fazer.ai agents no projeto `agents`) são privadas no Harbor: o Coolify precisa da credencial registrada **antes** de puxar, senão o deploy falha (pull denied / 401). Só no caminho Pro:
+Imagens **Pro** (Chatwoot `chatwoot-pro`; mavikOS-agentic no projeto `agents`) são privadas no Harbor: o Coolify precisa da credencial registrada **antes** de puxar, senão o deploy falha (pull denied / 401). Só no caminho Pro:
 
 1. Provisione a credencial **per-user** pelo **proxy do hub no CLI** (não há hub MCP na sessão; o CLI tem o OAuth do bootstrap):
    ```sh

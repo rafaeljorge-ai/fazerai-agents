@@ -3,7 +3,7 @@
 **Português (Brasil)** · [English](CONTRIBUTING-en.md)
 
 
-Obrigado pelo interesse em contribuir com o **fazer.ai agents**! Bug reports, correções, testes e documentação são bem-vindos.
+Obrigado pelo interesse em contribuir com o **mavikOS-agentic**! Bug reports, correções, testes e documentação são bem-vindos.
 
 ## Como este repositório funciona
 
@@ -19,7 +19,7 @@ Isso muda pouco para quem contribui, mas explica duas coisas:
 - Procure issues existentes (abertas e fechadas) antes de abrir uma nova.
 - Para bugs, inclua: passos de reprodução, comportamento esperado, comportamento observado e logs relevantes. Issues como a [#2](https://github.com/fazer-ai/agents/issues/2) são um bom modelo.
 - **Uma issue, uma coisa.** Dimensione a issue para que uma única pull request consiga fechá-la. Trabalho que se divide em várias pull requests são várias issues: issue que ninguém consegue fechar é issue que ninguém consegue terminar, e ela para de conseguir dizer o que falta. Isso é sobre como escrever uma, não uma exigência de que toda pull request tenha issue.
-- **Vulnerabilidades de segurança não vão em issue pública:** escreva para [support@fazer.ai](mailto:support@fazer.ai).
+- **Vulnerabilidades de segurança não vão em issue pública:** escreva para [suporte@mavikai.com.br](mailto:suporte@mavikai.com.br).
 
 ## Pull requests
 
@@ -53,6 +53,6 @@ Guias por subsistema vivem em [`docs/`](docs/); leia o do subsistema que você f
 
 ## CLA (Contributor License Agreement)
 
-O projeto é distribuído em duas edições geradas do mesmo master: a Free (Apache 2.0) e a Pro (comercial). Para que a sua contribuição possa ser reintegrada no master e distribuída nas duas, pedimos a concordância com o [CLA](https://github.com/fazer-ai/agents/blob/main/CLA.md), um license grant que autoriza esse uso **sem transferir a titularidade**: o código continua seu.
+O projeto é distribuído em duas edições geradas do mesmo master: a Free (Apache 2.0) e a Pro (comercial). Para que a sua contribuição possa ser reintegrada no master e distribuída nas duas, pedimos a concordância com o [CLA](https://github.com/mavik-ai/fazerai-agents/blob/main/CLA.md), um license grant que autoriza esse uso **sem transferir a titularidade**: o código continua seu.
 
-**Ao submeter uma pull request, você declara que leu e concorda com o [CLA](https://github.com/fazer-ai/agents/blob/main/CLA.md)** para essa contribuição e as futuras.
+**Ao submeter uma pull request, você declara que leu e concorda com o [CLA](https://github.com/mavik-ai/fazerai-agents/blob/main/CLA.md)** para essa contribuição e as futuras.

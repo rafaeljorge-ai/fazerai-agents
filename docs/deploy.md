@@ -1,6 +1,6 @@
 # Deploy
 
-fazer.ai agents is one Bun process (API + bundled SPA + LangGraph runtime + background workers) plus a PostgreSQL with the `pgvector` extension. This doc is the canonical deploy contract; the per-platform sections at the end are thin wrappers over the same model.
+mavikOS-agentic is one Bun process (API + bundled SPA + LangGraph runtime + background workers) plus a PostgreSQL with the `pgvector` extension. This doc is the canonical deploy contract; the per-platform sections at the end are thin wrappers over the same model.
 
 ## Load-bearing invariants
 

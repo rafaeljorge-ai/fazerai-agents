@@ -1,6 +1,6 @@
-# 04: Deploy do fazer.ai agents
+# 04: Deploy do mavikOS-agentic
 
-> **Avise o usuário onde você está:** o fazer.ai agents vem **depois do painel e do Chatwoot**; em seguida só falta o Langfuse. Diga que vai subir o fazer.ai agents agora e que leva alguns minutos; dê sinal de vida durante a espera longa e confirme ao terminar. Ver o princípio de narração (com a contagem que se ajusta ao caso real) em `SKILL.md`.
+> **Avise o usuário onde você está:** o mavikOS-agentic vem **depois do painel e do Chatwoot**; em seguida só falta o Langfuse. Diga que vai subir o mavikOS-agentic agora e que leva alguns minutos; dê sinal de vida durante a espera longa e confirme ao terminar. Ver o princípio de narração (com a contagem que se ajusta ao caso real) em `SKILL.md`.
 
 ## Edição: Free ou Pro (lê o marcador PRIMEIRO)
 
