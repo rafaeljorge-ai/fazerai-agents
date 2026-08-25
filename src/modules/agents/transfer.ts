@@ -248,9 +248,7 @@ export const EXPORTED_COMPONENT_KEYS = Object.keys(
 
 export const agentExportSchema = z.object({
   version: z.literal(AGENT_EXPORT_VERSION),
-  kind: z
-    .literal(AGENT_EXPORT_KIND)
-    .or(z.literal(LEGACY_AGENT_EXPORT_KIND)),
+  kind: z.literal(AGENT_EXPORT_KIND).or(z.literal(LEGACY_AGENT_EXPORT_KIND)),
   // Informational provenance (item 2): where/when this export came from. Optional so older exports
   // and hand-written payloads still import.
   meta: z

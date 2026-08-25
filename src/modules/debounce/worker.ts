@@ -39,7 +39,7 @@ interface Holder {
   running: boolean;
 }
 
-const KEY = Symbol.for("fazerai.debounce.worker");
+const KEY = Symbol.for("mavikos.debounce.worker");
 
 function holder(): Holder {
   const g = globalThis as unknown as Record<symbol, Holder>;

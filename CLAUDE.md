@@ -201,7 +201,7 @@ When adding external dependencies (analytics, captcha, CDN), extend the relevant
 
 ## Branding
 
-- "mavik.ai" is always lowercase in this codebase. "mavik-ai" is acceptable in slugs/identifiers. Never "Mavik.AI" or "MAVIK.AI". Legacy `fazer-ai`/`fazerai` identifiers (DB role, headers, upstream image/registry) remain until the identifier migration lands
+- "mavik.ai" is always lowercase in this codebase. "mavik-ai" is acceptable in slugs/identifiers. Never "Mavik.AI" or "MAVIK.AI". Live identifiers use the `mavikos` marker (cookie `mavikos_auth_token`, API key prefix `mavikos_`, headers `x-mavikos-*`, issuer `mavikos:mcp`, export kind `mavik-ai.agent`, role `mavikos_app`); the pre-rename `fazerai`/`secv4`/`secretaria` spellings are accepted-only compatibility windows dropped at 2.0. Upstream infra references (`app.fazer.ai` hub, `harbor.fazer.ai`, the fazer.ai Chatwoot fork images) are third-party names and stay as-is
 
 ## UX
 

@@ -18,7 +18,7 @@ const mockChangeLanguage = mock(async (_: string) => {});
 
 mock.module("@/client/contexts/AuthContext", () => ({
   useAuth: () => ({
-    user: { email: "admin@fazer.ai" },
+    user: { email: "admin@mavikai.com.br" },
     logout: mockLogout,
   }),
   AuthProvider: ({ children }: { children: ReactNode }) => children,
@@ -61,7 +61,9 @@ function renderMenu() {
 }
 
 function openDropdown() {
-  const trigger = screen.getByRole("button", { name: /admin@fazer\.ai/i });
+  const trigger = screen.getByRole("button", {
+    name: /admin@mavikai\.com\.br/i,
+  });
   fireEvent.pointerDown(trigger, { button: 0, ctrlKey: false });
   fireEvent.click(trigger);
   return trigger;
@@ -79,7 +81,7 @@ describe("UserMenu", () => {
   test("renders trigger with user email as accessible name", () => {
     renderMenu();
     expect(
-      screen.getByRole("button", { name: /admin@fazer\.ai/i }),
+      screen.getByRole("button", { name: /admin@mavikai\.com\.br/i }),
     ).toBeInTheDocument();
   });
 

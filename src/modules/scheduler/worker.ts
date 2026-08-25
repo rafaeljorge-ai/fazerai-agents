@@ -295,7 +295,7 @@ interface Holder {
   running: boolean;
 }
 
-const KEY = Symbol.for("fazerai.scheduler.worker");
+const KEY = Symbol.for("mavikos.scheduler.worker");
 
 function holder(): Holder {
   const g = globalThis as unknown as Record<symbol, Holder>;

@@ -8,7 +8,7 @@ import { MemoryRouter } from "react-router";
 
 mock.module("@/client/contexts/AuthContext", () => ({
   useAuth: () => ({
-    user: { email: "admin@fazer.ai" },
+    user: { email: "admin@mavikai.com.br" },
     logout: async () => {},
   }),
   AuthProvider: ({ children }: { children: ReactNode }) => children,
@@ -61,7 +61,7 @@ describe("Header", () => {
   test("renders account menu trigger with email as accessible name", () => {
     renderHeader();
     expect(
-      screen.getByRole("button", { name: /admin@fazer\.ai/i }),
+      screen.getByRole("button", { name: /admin@mavikai\.com\.br/i }),
     ).toBeInTheDocument();
   });
 

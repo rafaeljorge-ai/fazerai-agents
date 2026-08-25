@@ -97,7 +97,7 @@ function isErrorToolOutput(output: unknown): boolean {
 // keys dropped, secret-shaped strings scrubbed, everything truncated) before the write. Emits are
 // fire-and-forget (emitFlowEvent never throws into the turn).
 export class ToolFlowLogger extends BaseCallbackHandler {
-  name = "fazerai-tool-flowlog";
+  name = "mavikos-tool-flowlog";
 
   private readonly flow: FlowContext;
   // What a tool call leaves in `detail`: the shape of each value by default, which is what keeps the

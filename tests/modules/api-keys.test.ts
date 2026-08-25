@@ -30,7 +30,9 @@ describe("api key token generation", () => {
     expect(generateApiKey().token).not.toBe(generateApiKey().token);
   });
 
-  // Brand rename compatibility window: new keys are minted `mavikos_`, keys minted before carry  // `fazerai_` or `secv4_`. The prefix guard has to admit all of them; the DB lookup then decides. Dropped at 2.0.
+  // Brand rename compatibility window: new keys are minted `mavikos_`, keys minted before carry
+  // `fazerai_` or `secv4_`. The prefix guard has to admit all of them; the DB lookup then
+  // decides. Dropped at 2.0.
   test("the mint prefix is the current brand marker", () => {
     expect(API_KEY_PREFIX).toBe("mavikos_");
     expect(generateApiKey().token.startsWith("mavikos_")).toBe(true);
@@ -151,7 +153,7 @@ describe.skipIf(!dbUp)("api key service + verify (RLS)", () => {
   // minted under the old marker and lives in their DB. It has to keep authenticating unchanged —
   // we cannot reach a self-hosted instance to rewrite it.
   test("verify still resolves a key minted under the pre-rename prefix", async () => {
-    const legacyToken = `${"l".repeat(32)}`;
+    const legacyToken = `${LEGACY_API_KEY_PREFIXES[0]}${"l".repeat(32)}`;
     await su?.apiKey.create({
       data: {
         tenantId: tenantA,
@@ -175,7 +177,7 @@ describe.skipIf(!dbUp)("api key service + verify (RLS)", () => {
     expect(await verifyApiKey("not-a-key", appDb)).toBeNull();
     expect(await verifyApiKey(`${API_KEY_PREFIX}deadbeef`, appDb)).toBeNull();
     expect(
-      await verifyApiKey(`deadbeef`, appDb),
+      await verifyApiKey(`${LEGACY_API_KEY_PREFIXES[0]}deadbeef`, appDb),
     ).toBeNull();
   });
 

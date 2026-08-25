@@ -28,7 +28,7 @@ interface Entry {
   expiresAt: number;
 }
 
-const KEY = Symbol.for("fazerai.chatwoot.routeTokens");
+const KEY = Symbol.for("mavikos.chatwoot.routeTokens");
 
 function cache(): Map<string, Entry> {
   const g = globalThis as unknown as Record<

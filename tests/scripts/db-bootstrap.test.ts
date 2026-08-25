@@ -25,26 +25,26 @@ if (suUrl) {
   }
 }
 
-const ADMIN_ROLE = `fazerai_bs_admin_${process.pid}`;
-const APP_ROLE = `fazerai_bs_app_${process.pid}`;
-const FOREIGN_ROLE = `fazerai_bs_foreign_${process.pid}`;
-const UNREACHABLE_ROLE = `fazerai_bs_unreachable_${process.pid}`;
-const ROT_A_ROLE = `fazerai_bs_rot_a_${process.pid}`;
-const ROT_B_ROLE = `fazerai_bs_rot_b_${process.pid}`;
-const SOLO_ROLE = `fazerai_bs_solo_${process.pid}`;
-const SPLIT_OWNER = `fazerai_bs_split_${process.pid}`;
-const NOINH_ADMIN = `fazerai_bs_noinh_admin_${process.pid}`;
-const NOINH_APP = `fazerai_bs_noinh_app_${process.pid}`;
-const PRIV_PARENT = `fazerai_bs_priv_parent_${process.pid}`;
-const SU_PARENT = `fazerai_bs_su_parent_${process.pid}`;
-const TEAM_ROLE = `fazerai_bs_team_${process.pid}`;
-const SIDE_ROLE = `fazerai_bs_side_${process.pid}`;
-const HEIR_ROLE = `fazerai_bs_heir_${process.pid}`;
-const SETONLY_ROLE = `fazerai_bs_setonly_${process.pid}`;
-const PRIV_ROLE = `fazerai_bs_priv_${process.pid}`;
-const PROBE_DB = `fazerai_bs_probe_${process.pid}`;
-const SOLO_DB = `fazerai_bs_solo_db_${process.pid}`;
-const NOINH_DB = `fazerai_bs_noinh_db_${process.pid}`;
+const ADMIN_ROLE = `mavikos_bs_admin_${process.pid}`;
+const APP_ROLE = `mavikos_bs_app_${process.pid}`;
+const FOREIGN_ROLE = `mavikos_bs_foreign_${process.pid}`;
+const UNREACHABLE_ROLE = `mavikos_bs_unreachable_${process.pid}`;
+const ROT_A_ROLE = `mavikos_bs_rot_a_${process.pid}`;
+const ROT_B_ROLE = `mavikos_bs_rot_b_${process.pid}`;
+const SOLO_ROLE = `mavikos_bs_solo_${process.pid}`;
+const SPLIT_OWNER = `mavikos_bs_split_${process.pid}`;
+const NOINH_ADMIN = `mavikos_bs_noinh_admin_${process.pid}`;
+const NOINH_APP = `mavikos_bs_noinh_app_${process.pid}`;
+const PRIV_PARENT = `mavikos_bs_priv_parent_${process.pid}`;
+const SU_PARENT = `mavikos_bs_su_parent_${process.pid}`;
+const TEAM_ROLE = `mavikos_bs_team_${process.pid}`;
+const SIDE_ROLE = `mavikos_bs_side_${process.pid}`;
+const HEIR_ROLE = `mavikos_bs_heir_${process.pid}`;
+const SETONLY_ROLE = `mavikos_bs_setonly_${process.pid}`;
+const PRIV_ROLE = `mavikos_bs_priv_${process.pid}`;
+const PROBE_DB = `mavikos_bs_probe_${process.pid}`;
+const SOLO_DB = `mavikos_bs_solo_db_${process.pid}`;
+const NOINH_DB = `mavikos_bs_noinh_db_${process.pid}`;
 const ADMIN_PW = "bs-admin-pw";
 const APP_PW = "bs-app-pw";
 const ROTATED_PW = "bs-app-pw-rotated";

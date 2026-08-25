@@ -9,7 +9,7 @@ import { Semaphore } from "@/lib/semaphore";
 // the provider, and it recovers the one provider fault LangChain cannot see. Singleton on
 // globalThis so `bun --hot` reloads reuse one instance (same pattern as worker.ts / checkpointer.ts).
 
-const KEY = Symbol.for("fazerai.model.semaphore");
+const KEY = Symbol.for("mavikos.model.semaphore");
 
 function sem(): Semaphore {
   const g = globalThis as unknown as Record<symbol, Semaphore>;

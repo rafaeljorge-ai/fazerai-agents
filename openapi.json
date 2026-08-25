@@ -22,14 +22,14 @@
       "sessionCookie": {
         "type": "apiKey",
         "in": "cookie",
-        "name": "fazerai_auth_token",
+        "name": "mavikos_auth_token",
         "description": "Session JWT set by /api/auth/login (HttpOnly cookie)."
       },
       "bearerToken": {
         "type": "http",
         "scheme": "bearer",
         "bearerFormat": "JWT",
-        "description": "Bearer token for the API / MCP transport: an MCP OAuth access token, or a per-tenant API key (`fazerai_…`) created at /api-keys."
+        "description": "Bearer token for the API / MCP transport: an MCP OAuth access token, or a per-tenant API key (`mavikos_…`) created at /api-keys."
       }
     },
     "schemas": {}
@@ -1190,7 +1190,7 @@
           "System"
         ],
         "summary": "Operator announcements & update check",
-        "description": "Active hub announcements (rendered as a top banner) plus whether a newer app version is available for this edition. Authenticated; global (not tenant-scoped); fail-open (empty when the hub is unreachable or disabled via FAZER_AI_HUB_URL).",
+        "description": "Active hub announcements (rendered as a top banner) plus whether a newer app version is available for this edition. Authenticated; global (not tenant-scoped); fail-open (empty when the hub is unreachable or disabled via MAVIK_AI_HUB_URL).",
         "responses": {
           "401": {
             "description": "Unauthorized — missing or invalid credentials.",

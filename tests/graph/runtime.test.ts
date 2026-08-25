@@ -2120,7 +2120,7 @@ describe.skipIf(!dbUp)("runAgentTurn", () => {
   test("a granted document template becomes a tool whose PDF reaches the customer first", async () => {
     await allowImageHost();
     await seedConversation(941, null);
-    const dir = `/tmp/fazerai-runtime-doc-${process.pid}`;
+    const dir = `/tmp/mavikos-runtime-doc-${process.pid}`;
     const starter = documentStarter("quote", "pt-BR");
     if (!starter) throw new Error("no starter");
     const agent = await suDb.agent.findFirst({
@@ -2219,7 +2219,7 @@ describe.skipIf(!dbUp)("runAgentTurn", () => {
   // window, and bytes cannot say they were voided. Asked again immediately before the send.
   test("a document revoked while the turn finishes is not delivered", async () => {
     await seedConversation(944, null);
-    const dir = `/tmp/fazerai-runtime-revoked-${process.pid}`;
+    const dir = `/tmp/mavikos-runtime-revoked-${process.pid}`;
     const starter = documentStarter("quote", "pt-BR");
     if (!starter) throw new Error("no starter");
     const agent = await suDb.agent.findFirst({
@@ -2322,7 +2322,7 @@ describe.skipIf(!dbUp)("runAgentTurn", () => {
   // alerts them about their own click.
   test("an attachment-only turn whose document was revoked does not fail the turn", async () => {
     await seedConversation(946, null);
-    const dir = `/tmp/fazerai-runtime-revoked-only-${process.pid}`;
+    const dir = `/tmp/mavikos-runtime-revoked-only-${process.pid}`;
     const starter = documentStarter("quote", "pt-BR");
     if (!starter) throw new Error("no starter");
     const agent = await suDb.agent.findFirst({
@@ -2402,7 +2402,7 @@ describe.skipIf(!dbUp)("runAgentTurn", () => {
   // an unanswered conversation with nothing on it saying why.
   test("an attachment-only turn whose revocation lookup fails still fails loudly", async () => {
     await seedConversation(947, null);
-    const dir = `/tmp/fazerai-runtime-lookupfail-only-${process.pid}`;
+    const dir = `/tmp/mavikos-runtime-lookupfail-only-${process.pid}`;
     const starter = documentStarter("quote", "pt-BR");
     if (!starter) throw new Error("no starter");
     const agent = await suDb.agent.findFirst({
@@ -2489,7 +2489,7 @@ describe.skipIf(!dbUp)("runAgentTurn", () => {
   // were owed — over a lookup about an attachment. The document is held back; the reply is not.
   test("a failing revocation lookup holds the document and still sends the reply", async () => {
     await seedConversation(945, null);
-    const dir = `/tmp/fazerai-runtime-lookupfail-${process.pid}`;
+    const dir = `/tmp/mavikos-runtime-lookupfail-${process.pid}`;
     const starter = documentStarter("quote", "pt-BR");
     if (!starter) throw new Error("no starter");
     const agent = await suDb.agent.findFirst({
@@ -3304,7 +3304,7 @@ describe.skipIf(!dbUp)("runAgentTurn", () => {
         categories: ["toxicity"],
         rationale: "line item",
       });
-      const dir = `/tmp/fazerai-guard-doc-${process.pid}`;
+      const dir = `/tmp/mavikos-guard-doc-${process.pid}`;
       const outcome = await runAgentTurn({
         tenantId: gTenantId,
         instanceId: gInstanceId,

@@ -21,7 +21,7 @@ export interface StatusTarget {
 }
 
 export class AgentStatusReporter extends BaseCallbackHandler {
-  name = "fazerai-agent-status";
+  name = "mavikos-agent-status";
 
   private readonly tenantId: bigint;
   private readonly conversationDbId: bigint | null;

@@ -85,7 +85,7 @@ interface ClientHolder {
   clients: Map<string, Langfuse>;
 }
 
-const CACHE_KEY = Symbol.for("fazerai.langfuse.clients");
+const CACHE_KEY = Symbol.for("mavikos.langfuse.clients");
 
 function clientCache(): Map<string, Langfuse> {
   const g = globalThis as unknown as Record<symbol, ClientHolder>;

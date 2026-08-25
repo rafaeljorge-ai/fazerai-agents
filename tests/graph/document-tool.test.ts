@@ -159,7 +159,7 @@ if (appUrl && suUrl) {
 const appDb = app as PrismaClient;
 const suDb = su as PrismaClient;
 
-const DIR = `/tmp/fazerai-doctool-${process.pid}`;
+const DIR = `/tmp/mavikos-doctool-${process.pid}`;
 let tenantId = 0n;
 let templateId = 0n;
 
